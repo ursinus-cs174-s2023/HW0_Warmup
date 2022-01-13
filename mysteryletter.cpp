@@ -43,7 +43,9 @@ int main() {
         fname << "Mystery" << (i+N) << ".png";
         canvas.write(fname.str());
     }
-    std::string vcmd = "ffmpeg -y -r 30 -i Mystery%d.png -r 30 -b 10000k MysteryLetter.avi";
+    std::string pcmd = "ffmpeg -i Mystery50.png -vf palettegen Mysterypalette.png";
+    system(pcmd.c_str());
+    std::string vcmd = "ffmpeg -y -r 30 -i Mystery%d.png -i Mysterypalette.png -lavfi paletteuse MysteryLetter.gif";
     system(vcmd.c_str());
     std::string rcmd = "rm Mystery*.png";
     system(rcmd.c_str());
