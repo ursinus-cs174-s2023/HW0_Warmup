@@ -175,7 +175,7 @@ class SimpleImage {
                 std::string cmd = "ffmpeg -y -i " + fname + " " + newfname + " >readlog.txt 2>readlog.txt";
                 system((const char*)cmd.c_str());
             }
-            std::ifstream fin{(const char*)newfname.c_str(), std::ios::in|std::ios::binary};
+            std::ifstream fin((const char*)newfname.c_str(), std::ios::in|std::ios::binary);
             if (fin.is_open()) {
                 char temp;
                 std::string line;
