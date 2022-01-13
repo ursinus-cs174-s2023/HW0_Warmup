@@ -1,6 +1,9 @@
 /**
  * @brief A simple library for images in C++, by Chris Tralie
  */
+#ifndef SIMPLEIMG_H
+#define SIMPLEIMG_H
+
 #pragma once
 #include <fstream>
 #include <vector>
@@ -428,3 +431,5 @@ class SimpleImage {
             }
         }
 };
+
+#endif

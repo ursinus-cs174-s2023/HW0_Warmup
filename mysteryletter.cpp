@@ -6,7 +6,7 @@
 #include <math.h>
 #include <string>
 #include <sstream>
-#include "simpleimg.h"
+#include "SimpleImage.h"
 # define M_PI  3.14159265358979323846
 
 int main() {
