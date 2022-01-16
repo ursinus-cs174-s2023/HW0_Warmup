@@ -31,5 +31,5 @@ _main:
 	movl	$0, %eax
 	callq	_printf
 	movl	$0, %eax
-	pop		%rbp
+	popq	%rbp
 	retq
