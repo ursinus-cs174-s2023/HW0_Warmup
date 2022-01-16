@@ -1,3 +1,6 @@
 [submodule "canvas/simplecanvas"]
 	path = canvas/simplecanvas
 	url = https://github.com/ursinus-cs174-s2022/simplecanvas.git
+[submodule "tinygl-cpp"]
+	path = tinygl-cpp
+	url = https://github.com/ursinus-cs174-s2022/tinygl-cpp.git
