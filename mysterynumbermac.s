@@ -1,22 +1,22 @@
 ### --------------------------------------------------------------------
-### mystery.s
+### mysterynumbermac.s
 ### Author: Chris Tralie
 ### --------------------------------------------------------------------
-	.section	.rodata
+	.section	__RODATA__,__rodata
 .fmtStr:
 	.string	"%i\n"
 
 ### --------------------------------------------------------------------
-	.section        .data
+	.section   __DATA__,__data
 
 ### --------------------------------------------------------------------
-	.section        .bss
+	.section   __BSS__,__bss
 
 ### --------------------------------------------------------------------
-	.text
-	.globl	main
-	.type	main, @function
-main:
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_main
+
+_main:
 	pushq	%rbp
 	movq	%rsp, %rbp
 	movl	$3, %esi
@@ -29,7 +29,7 @@ main:
 .endloop:
 	leaq	.fmtStr(%rip), %rdi
 	movl	$0, %eax
-	callq	printf
+	callq	_printf
 	movl	$0, %eax
-	popq	%rbp
+	pop		%rbp
 	retq
