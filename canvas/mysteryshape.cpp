@@ -6,7 +6,7 @@
 #include <math.h>
 #include <string>
 #include <sstream>
-#include "SimpleCanvas.h"
+#include "simplecanvas/SimpleCanvas.h"
 # define M_PI  3.14159265358979323846
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
     }
     std::string pcmd = "ffmpeg -i Mystery50.png -vf palettegen Mysterypalette.png";
     system(pcmd.c_str());
-    std::string vcmd = "ffmpeg -y -r 30 -i Mystery%d.png -i Mysterypalette.png -lavfi paletteuse MysteryLetter.gif";
+    std::string vcmd = "ffmpeg -y -r 30 -i Mystery%d.png -i Mysterypalette.png -lavfi paletteuse MysteryShape.gif";
     system(vcmd.c_str());
     std::string rcmd = "rm Mystery*.png";
     system(rcmd.c_str());
