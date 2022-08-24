@@ -26,15 +26,7 @@ int main() {
         }
         x0 = x1;
         y0 = y1;
-        std::stringstream fname;
-        fname << "Mystery" << i << ".png";
-        canvas.write(fname.str());
     }
-    std::string pcmd = "ffmpeg -i Mystery50.png -vf palettegen Mysterypalette.png";
-    system(pcmd.c_str());
-    std::string vcmd = "ffmpeg -y -r 30 -i Mystery%d.png -i Mysterypalette.png -lavfi paletteuse MysteryShape.gif";
-    system(vcmd.c_str());
-    std::string rcmd = "rm Mystery*.png";
-    system(rcmd.c_str());
+    canvas.write("mystery.png");
     return 0;
 }
