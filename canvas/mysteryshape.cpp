@@ -7,7 +7,9 @@
 #include <string>
 #include <sstream>
 #include "simplecanvas/SimpleCanvas.h"
-# define M_PI  3.14159265358979323846
+#ifndef M_PI
+#define M_PI  3.14159265358979323846
+#endif
 
 int main() {
     SimpleCanvas canvas(200, 200);
