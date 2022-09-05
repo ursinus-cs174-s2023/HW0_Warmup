@@ -35,6 +35,8 @@
 #include <stddef.h>
 #include <limits.h>
 
+#define MAX_32_BIT_INT 2147483648
+
 // disable some warnings on Windows
 #if defined (_MSC_VER)
     __pragma(warning (push))
@@ -618,7 +620,7 @@ bool AudioFile<T>::decodeWaveFile (std::vector<uint8_t>& fileData)
                 if (audioFormat == WavAudioFormat::IEEEFloat)
                     sample = (T)reinterpret_cast<float&> (sampleAsInt);
                 else // assume PCM
-                    sample = (T) sampleAsInt / static_cast<float> (std::numeric_limits<std::int32_t>::max());
+                    sample = (T) sampleAsInt / (float)(MAX_32_BIT_INT);
                 
                 samples[channel].push_back (sample);
             }
@@ -763,7 +765,7 @@ bool AudioFile<T>::decodeAiffFile (std::vector<uint8_t>& fileData)
                 if (audioFormat == AIFFAudioFormat::Compressed)
                     sample = (T)reinterpret_cast<float&> (sampleAsInt);
                 else // assume uncompressed
-                    sample = (T) sampleAsInt / static_cast<float> (std::numeric_limits<std::int32_t>::max());
+                    sample = (T) sampleAsInt / (float)(MAX_32_BIT_INT);
                     
                 samples[channel].push_back (sample);
             }
@@ -923,7 +925,7 @@ bool AudioFile<T>::saveToWaveFile (std::string filePath)
                 if (audioFormat == WavAudioFormat::IEEEFloat)
                     sampleAsInt = (int32_t) reinterpret_cast<int32_t&> (samples[channel][i]);
                 else // assume PCM
-                    sampleAsInt = (int32_t) (samples[channel][i] * std::numeric_limits<int32_t>::max());
+                    sampleAsInt = (int32_t) (samples[channel][i] * MAX_32_BIT_INT);
                 
                 addInt32ToFileData (fileData, sampleAsInt, Endianness::LittleEndian);
             }
@@ -1029,7 +1031,7 @@ bool AudioFile<T>::saveToAiffFile (std::string filePath)
             else if (bitDepth == 32)
             {
                 // write samples as signed integers (no implementation yet for floating point, but looking at WAV implementation should help)
-                int32_t sampleAsInt = (int32_t) (samples[channel][i] * std::numeric_limits<int32_t>::max());
+                int32_t sampleAsInt = (int32_t) (samples[channel][i] * MAX_32_BIT_INT);
                 addInt32ToFileData (fileData, sampleAsInt, Endianness::BigEndian);
             }
             else
