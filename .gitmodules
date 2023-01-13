@@ -1,3 +1,6 @@
 [submodule "canvas/simplecanvas"]
 	path = canvas/simplecanvas
 	url = https://github.com/ursinus-cs174-s2022/simplecanvas.git
+[submodule "animation/wsServer"]
+	path = animation/wsServer
+	url = https://github.com/ursinus-cs174-s2023/wsServer.git
